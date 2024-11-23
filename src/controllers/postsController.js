@@ -21,8 +21,8 @@ export async function postarNovoPost(req, res) {
 export async function uploadImagem(req, res) {
     const novoPost = {
         descricao:"",
-        imgurl: req.file.originalname,
-        alt: ""
+        imgUrl: req.file.originalname,
+        alt: "",
     };
     try {
         const postCriado = await criarPost(novoPost);
@@ -39,12 +39,12 @@ export async function atualizarNovoPost(req, res) {
     const id = req.params.id;
     const urlImagem = `http:/localhost:3000/${id}.png`
     const post = {
-        imgurl: urlImagem,
+        imgUrl: urlImagem,
         descricao: req.body.descricao,
-        alt: req.body.alt
+        alt: req.body.alt,
     }
     try {
-        const postCriado = await atualizarPost(id, Post)
+        const postCriado = await atualizarPost(id, post)
         res.status(200).json(postCriado);
     } catch {
         console.error(erro.message);
